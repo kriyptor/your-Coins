@@ -16,20 +16,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(5),
   },
   title: {
     flexGrow: 1,
   },
   list: {
-    width: 200
+    width: 250
   },
   listItem:{
     marginLeft: 10,
@@ -38,11 +38,17 @@ const useStyles = makeStyles((theme) => ({
   head : {
     backgroundColor: '#3F53B5',
     color: '#ffff'
-  }
+  },
+  chip:{
+    fontSize: 23,
+    fontWeight: 'bolder',
+    color: '#3F53B5',
+    backgroundColor: 'white'
+  },
  
 }));
 
-export default function ButtonAppBar({ Link }) {
+export default function ButtonAppBar({ Link , setInfoModal }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   return (
@@ -60,12 +66,11 @@ export default function ButtonAppBar({ Link }) {
               <MenuIcon />
               <Drawer />
             </IconButton>
-            <Typography variant="h4" className={classes.title}>
-              Your Coins
+            <Typography variant="h5" className={classes.title}> 
+             <Chip label='Your' className={classes.chip}/> Coins  
             </Typography>
-            <Button color="inherit">
+            <Button color="inherit" onClick={() => setInfoModal(true)}>
               <InfoIcon />
-              -Info
             </Button>
           </Toolbar>
         </AppBar>
