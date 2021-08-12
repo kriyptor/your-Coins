@@ -4,7 +4,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
@@ -31,11 +30,11 @@ export default function BasicTable({ coinData }) {
         createData('Current Price', `₹${coinData.map((x) => x.current_price.toLocaleString())}`),
         createData('Price Change in 24hr', `₹${coinData.map((x) => x.price_change_24h.toLocaleString())} | ${coinData.map((x) => x.price_change_percentage_24h.toFixed(2))}%`),
         createData('High In 24hr', `₹${coinData.map((x) => x.high_24h.toLocaleString())}`),
-        createData('Low In 24hr', `₹${coinData.map((x) => x.low_24h.toLocaleString())}`),
+        createData('Low In 24hr', `₹${coinData.map((x) => x.low_24h.toLocaleString())}`), 
         createData('All time high', `₹${coinData.map((x) => x.ath.toLocaleString())}`),
         createData('All time low', `₹${coinData.map((x) => x.atl.toLocaleString())}`),
         createData('Market Cap', `₹${coinData.map((x) => x.market_cap.toLocaleString())}`),
-        createData('Market Cap Change in 24hr', `₹${coinData.map((x) => x.market_cap_change_24h.toLocaleString())} | ${coinData.map((x) => x.market_cap_change_percentage_24h.toFixed(2))}%`),
+        createData('Market Cap Change in 24hr', `₹${coinData.map((x) => x.market_cap_change_24h.toLocaleString())} | ${coinData.map((x) => x.market_cap_change_percentage_24h.toFixed(2))}%`), 
         createData('Circulating Supply', `${coinData.map((x) => x.circulating_supply.toLocaleString())}`),
         createData('Total Supply', supply),
       ];

@@ -34,13 +34,15 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
   return (
     <div>
       <Dialog open={openAddModal} onClose={handleCloseAdd} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title" color='primary'>
+        <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#3f51b5' , color: '#FFFFFF'}}>
           <Typography variant='h6'align='center'>Add Your Investment Details</Typography>
         </DialogTitle>
         <Divider/>
         <DialogContent>
           <DialogContentText>
-           Kindly enter the authentic details regarding your crypto investment below.
+          <Typography variant="body2" color='Secondary' align='justify'>
+          *Kindly enter the authentic details regarding your crypto investment below. otherwise projection will be faulty
+          </Typography>
           </DialogContentText>
               <TextField
               autoFocus
@@ -76,7 +78,7 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
           <TextField
             margin="dense"
             id="coin"
-            label="Total Coin"
+            label="Total Coins"
             type="number"
             fullWidth
             name='totCoin'

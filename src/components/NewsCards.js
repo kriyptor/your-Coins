@@ -10,12 +10,10 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LaunchIcon from '@material-ui/icons/Launch';
-import { ToastContainer, toast } from 'react-toastify';
-import { Button } from '@material-ui/core';
+import { toast } from 'react-toastify';
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto',

@@ -16,13 +16,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialog(props) {
   const handleClose = () => {
-    props.setOpenUpdateModal(false);
+    props.setOpenKnowModal(false);
   };
-  const coinData = props.coins.filter((c) => (c.symbol === props.updateCoinName))
+  const coinData = props.coins.filter((c) => (c.symbol === props.knowCoinName))
   return (
     <div>
       <Dialog
-        open={props.openUpdateModal}
+        open={props.openKnowModal}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -30,7 +30,7 @@ export default function AlertDialog(props) {
         maxWidth='sm'
         TransitionComponent={Transition}
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title" style={{ backgroundColor: '#3f51b5' , color: '#FFFFFF'}}>
           <Typography
             variant="h5"
             style={{

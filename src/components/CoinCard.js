@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -46,15 +46,9 @@ const profLoss = (currPrice-props.price).toFixed(2)
 const priceChange = Math.abs(((props.price-currPrice)/props.price)*100).toFixed(2)
 const color = profLoss > 0 ? '#198c19' : '#ff3232'
 const update = () => {
-  props.setUpdateCoinName(props.name)
-  /* props.setUpdateTotCoin(props.coin)
-  props.setUpdateTotAmnt(props.price) */
+  props.setKnowCoinName(props.name)
   props.handleClickUpdate()
 }
-useEffect(() => {
-  props.uniRealAmt.push(Math.abs(profLoss))
-}, [props.uniRealAmt])
-
 
   return (
     <Container maxWidth="xs">

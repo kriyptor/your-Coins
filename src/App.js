@@ -5,23 +5,16 @@ import AddCoins from './components/AddCoins';
 import CoinCard from './components/CoinCard'
 import axios from 'axios';
 import Progress from './components/Progress';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { makeStyles } from '@material-ui/core/styles';
-import Navbar from './components/NavBar'
-import KnowMoreModal from './components/KnowMoreModal'
+import Navbar from './components/NavBar';
+import KnowMoreModal from './components/KnowMoreModal';
 import Chip from '@material-ui/core/Chip';
-import Market from './components/Market'
+import Market from './components/Market';
 import News from './components/News';
 import InfoModal from './components/InfoModal';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 toast.configure() 
 const useStyles = makeStyles({
@@ -44,12 +37,12 @@ loader: {
 
 function App() {
   const [openAddModal, setOpenAddModal] = useState(false);
-  const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [openKnowModal, setOpenKnowModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
   const [coinDetails, setCoinDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
-  const [updateCoinName, setUpdateCoinName] = useState('');
+  const [knowCoinName, setKnowCoinName] = useState('');
   const [uniRealAmt, setUniRealAmt] = useState([]);
   const notifyAdded = () => {toast.success("Coin Added! 🤟", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
   const notifyRemove = () => {toast.error("Coin removed! ☠️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
@@ -77,11 +70,7 @@ function App() {
   };
 
   const handleClickUpdate = () => { 
-    setOpenUpdateModal(true)
-  }
-
-  const handleCloseUpdate = () => {
-    setOpenUpdateModal(false)
+    setOpenKnowModal(true)
   }
 
   const addCoin = (name, coin, amount) => {
@@ -139,11 +128,10 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
               notifyWarn={notifyWarn}
             />
             <KnowMoreModal
-              openUpdateModal={openUpdateModal}
+              openKnowModal={openKnowModal}
               coins={coins}
-              updateCoinName={updateCoinName}
-              setOpenUpdateModal={setOpenUpdateModal}
-              updateCoinName={updateCoinName}
+              knowCoinName={knowCoinName}
+              setOpenKnowModal={setOpenKnowModal}
             />
             <InfoModal setInfoModal={setInfoModal} infoModal={infoModal} />
             {loading ? (
@@ -173,7 +161,7 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
                     coins={coins}
                     handleDelCoin={delCoin}
                     handleClickUpdate={handleClickUpdate}
-                    setUpdateCoinName={setUpdateCoinName}
+                    setKnowCoinName={setKnowCoinName}
                     addCurrAmt={addCurrAmt}
                     setUniRealAmt={setUniRealAmt}
                     uniRealAmt={uniRealAmt}
@@ -184,11 +172,10 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
           </Route>
           <Route exact path="/market">
           <KnowMoreModal
-              openUpdateModal={openUpdateModal}
+              openKnowModal={openKnowModal}
               coins={coins}
-              updateCoinName={updateCoinName}
-              setOpenUpdateModal={setOpenUpdateModal}
-              updateCoinName={updateCoinName}
+              knowCoinName={knowCoinName}
+              setOpenKnowModal={setOpenKnowModal}
             />
             <InfoModal setInfoModal={setInfoModal} infoModal={infoModal} />
             <Market
@@ -202,7 +189,7 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
                   a.price_change_percentage_24h - b.price_change_percentage_24h
               )}
               handleClickUpdate={handleClickUpdate}
-              setUpdateCoinName={setUpdateCoinName}
+              setKnowCoinName={setKnowCoinName}
             />
           </Route>
           <Route exact path="/news">

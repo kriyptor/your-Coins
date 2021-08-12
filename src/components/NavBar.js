@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import InfoIcon from '@material-ui/icons/Info';
+import HelpIcon from '@material-ui/icons/Help';
 import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -17,6 +17,7 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Chip from '@material-ui/core/Chip';
+import { SwipeableDrawer } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#3F53B5',
     backgroundColor: 'white'
   },
+  made : {
+    marginBottom: 0
+  }
  
 }));
 
@@ -70,13 +74,13 @@ export default function ButtonAppBar({ Link , setInfoModal }) {
              <Chip label='Your' className={classes.chip}/> Coins  
             </Typography>
             <Button color="inherit" onClick={() => setInfoModal(true)}>
-              <InfoIcon />
+              <HelpIcon/>
             </Button>
           </Toolbar>
         </AppBar>
       </div>
       <>
-        <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+        <SwipeableDrawer anchor="left" open={open} onClose={() => setOpen(false)}>
           <div className={classes.list}>
             <Box textAlign="center" p={1} className={classes.head}>
               <h3>Menu</h3>
@@ -112,7 +116,7 @@ export default function ButtonAppBar({ Link , setInfoModal }) {
             </List>
             <Divider />
           </div>
-        </Drawer>
+        </SwipeableDrawer>
       </>
     </>
   );

@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ComplexGrid({ name, coinImg, currPrice, priceChange , handleClickUpdate, setUpdateCoinName, symbol}) {
+export default function ComplexGrid({ name, coinImg, currPrice, priceChange , handleClickUpdate, setKnowCoinName, symbol}) {
   const classes = useStyles();
   const color = priceChange < 0 ? 'red' : 'green'
   const sign = priceChange > 0 ? <ArrowDropUpIcon/> :  <ArrowDropDownIcon/>
   const knowMore = () => {
-    setUpdateCoinName(symbol)
+    setKnowCoinName(symbol)
     handleClickUpdate()
   }
   
