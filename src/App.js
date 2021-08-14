@@ -9,12 +9,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from './components/NavBar';
-import KnowMoreModal from './components/KnowMoreModal';
 import Chip from '@material-ui/core/Chip';
 import Market from './components/Market';
 import News from './components/News';
 import InfoModal from './components/InfoModal';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import FullScreenDialog from './components/FullKnowMore';
 
 toast.configure() 
 const useStyles = makeStyles({
@@ -127,12 +127,6 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
               HandleaddCoin={addCoin}
               notifyWarn={notifyWarn}
             />
-            <KnowMoreModal
-              openKnowModal={openKnowModal}
-              coins={coins}
-              knowCoinName={knowCoinName}
-              setOpenKnowModal={setOpenKnowModal}
-            />
             <InfoModal setInfoModal={setInfoModal} infoModal={infoModal} />
             {loading ? (
               <Chip
@@ -168,15 +162,21 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
                   />
                 ))
               )}
-            </>
-          </Route>
-          <Route exact path="/market">
-          <KnowMoreModal
+              <FullScreenDialog
               openKnowModal={openKnowModal}
               coins={coins}
               knowCoinName={knowCoinName}
               setOpenKnowModal={setOpenKnowModal}
-            />
+              />
+            </>
+          </Route>
+          <Route exact path="/market">
+          <FullScreenDialog
+              openKnowModal={openKnowModal}
+              coins={coins}
+              knowCoinName={knowCoinName}
+              setOpenKnowModal={setOpenKnowModal}
+              />
             <InfoModal setInfoModal={setInfoModal} infoModal={infoModal} />
             <Market
               coins={coins}

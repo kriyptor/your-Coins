@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { Divider, Typography } from '@material-ui/core';
+import {  Divider, Typography } from '@material-ui/core';
 
 
 
@@ -34,7 +34,7 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
   return (
     <div>
       <Dialog open={openAddModal} onClose={handleCloseAdd} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#3f51b5' , color: '#FFFFFF'}}>
+       <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#3f51b5' , color: '#FFFFFF'}}>
           <Typography variant='h6'align='center'>Add Your Investment Details</Typography>
         </DialogTitle>
         <Divider/>
@@ -44,22 +44,22 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
           *Kindly enter the authentic details regarding your crypto investment below. otherwise projection will be faulty
           </Typography>
           </DialogContentText>
-              <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Enter symbol of the coin"
-              type="name"
-              fullWidth
-              name='name'
-              value={coinName.toLowerCase()}
-              onChange={(e) => setCoinName((e.target.value))}
-              variant='outlined'
-              placeholder='btc'
-              InputProps={{
-                startAdornment: <InputAdornment position="start">Symbol:</InputAdornment>,
-              }}
-          />
+          <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Enter symbol of the coin"
+                type="name"
+                fullWidth
+                name='name'
+                value={coinName.toLowerCase()}
+                onChange={(e) => setCoinName((e.target.value))}
+                variant='outlined'
+                placeholder='btc'
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">Symbol:</InputAdornment>,
+                }}
+            />
            <TextField
             margin="dense"
             id="coin"
@@ -102,4 +102,3 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
     </div>
   );
 }
-

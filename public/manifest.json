@@ -2,7 +2,7 @@
   "name": "Your Coins",
   "short_name": "YC",
   "theme_color": "#3f53b5",
-  "background_color": "#FFFFFF",
+  "background_color": "#3f53b5",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
