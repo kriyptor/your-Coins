@@ -10,7 +10,6 @@ import Slide from '@material-ui/core/Slide';
 import InfoTable from './InfoTable'
 import { Container } from '@material-ui/core';
 import DialogContent from '@material-ui/core/DialogContent';
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
