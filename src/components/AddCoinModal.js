@@ -18,7 +18,7 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
 
 
   const handleSubmit = () => {
-    if(coinName.trim().length > 0 && coinName.trim().length <= 4 && totAmnt > 0 && totCoin > 0)
+    if(coinName.trim().length > 0 && coinName.trim().length <= 7 && totAmnt > 0 && totCoin > 0)
     {
     HandleaddCoin(coinName, totCoin, totAmnt);
     setCoinName("");
