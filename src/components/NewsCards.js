@@ -14,6 +14,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LaunchIcon from '@material-ui/icons/Launch';
 import { toast } from 'react-toastify';
+import { Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto',
@@ -69,7 +70,7 @@ export default function RecipeReviewCard({ title, author, thumbnail, description
              <ShareIcon />
           </IconButton>
         }
-        title={`By ${author}`}
+        title={<Button variant='text' onClick={routeChange}>{`By ${author}`}</Button>}
         subheader={publishedAt}
       />
       <CardMedia

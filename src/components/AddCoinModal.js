@@ -11,23 +11,26 @@ import {  Divider, Typography } from '@material-ui/core';
 
 
 
-export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin, notifyWarn }) {
+export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin, notifyWarn, coinSymbol, notifyNotHave }) {
   const [coinName, setCoinName] = useState('');
-  const [totCoin, setTotCoin] = useState(0);  
-  const [totAmnt, setTotAmnt] = useState(0);
-
+  const [totCoin, setTotCoin] = useState();  
+  const [totAmnt, setTotAmnt] = useState();
+  
 
   const handleSubmit = () => {
-    if(coinName.trim().length > 0 && coinName.trim().length <= 7 && totAmnt > 0 && totCoin > 0)
+   if((coinSymbol.find(c => c === coinName) && coinName.trim().length <= 7) && (totAmnt > 0 && totCoin > 0)) /* coinSymbol.find(c => c === coinName) && coinName.trim().length <= 7 && totAmnt > 0 && totCoin > 0 */
     {
-    HandleaddCoin(coinName, totCoin, totAmnt);
-    setCoinName("");
-    setTotCoin(0);
-    setTotAmnt(0);
-    handleCloseAdd();
+      HandleaddCoin(coinName, totCoin, totAmnt);
+      setCoinName("");
+      setTotCoin();
+      setTotAmnt();
+      handleCloseAdd();
+    } 
+    else if(coinSymbol.find(c => c === coinName) === undefined){
+      notifyNotHave()
     }
     else{
-      notifyWarn()
+       notifyWarn()
     }
   };
 
@@ -40,9 +43,10 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
         <Divider/>
         <DialogContent>
           <DialogContentText>
-          <Typography variant="body2" color='Secondary' align='justify'>
-          *Kindly enter the authentic details regarding your crypto investment below. otherwise projection will be faulty
+          <Typography variant="body2" color='Secondary' align='center'>
+           *YC only has data 0f top 250 coins! 
           </Typography>
+          <Typography variant="caption" display="block" color='textPrimary' align='center'>Powerd By Gecko Coins</Typography>
           </DialogContentText>
           <TextField
                 autoFocus
@@ -52,7 +56,7 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
                 type="name"
                 fullWidth
                 name='name'
-                value={coinName.toLowerCase()}
+                value={coinName.toLowerCase().trim()}
                 onChange={(e) => setCoinName((e.target.value))}
                 variant='outlined'
                 placeholder='btc'
@@ -62,13 +66,12 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
             />
            <TextField
             margin="dense"
-            id="coin"
+            id="coinAmount"
             label="Total Amount Invested"
-            type="number"
+            type="tel"
             fullWidth
-            name='totAmnt'
+            placeholder='0'
             value={totAmnt}
-            startAdornment='$'
             onChange={(e) => setTotAmnt(e.target.value)}
             variant='outlined'
             InputProps={{
@@ -77,9 +80,10 @@ export default function FormDialog({ handleCloseAdd, openAddModal, HandleaddCoin
           />
           <TextField
             margin="dense"
-            id="coin"
+            id="coinTotal"
             label="Total Coins"
-            type="number"
+            type="tel"
+            placeholder='0'
             fullWidth
             name='totCoin'
             value={totCoin}

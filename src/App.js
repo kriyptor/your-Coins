@@ -46,11 +46,12 @@ function App() {
   const [uniRealAmt, setUniRealAmt] = useState([]);
   const notifyAdded = () => {toast.success("Coin Added! 🤟", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
   const notifyRemove = () => {toast.error("Coin removed! ☠️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
-  const notifyWarn = () => {toast.warn("Kindly add correct value! ☑️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
+  const notifyWarn = () => {toast.warn("Kindly Enter Correct values! ☑️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2500,})};
+  const notifyNotHave = () => {toast.error("Sorry we don't have this coin! 😥", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
   const idGen = () => Math.floor(Math.random()*1000000);
   
   useEffect(() =>{
-    axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
+    axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=250&page=1&sparkline=false`)
     .then(res => {
       setCoins(res.data)
       setLoading(false)
@@ -60,7 +61,7 @@ function App() {
   
   const gainerCoins = coins.filter(c => c.price_change_percentage_24h > 0);
   const losserCoins = coins.filter(c => c.price_change_percentage_24h < 0);
-  
+  const coinSymbol = coins.map(c => c.symbol)
   const handleClickOpenAdd = () => {
     setOpenAddModal(true);
   };
@@ -126,6 +127,8 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
               openAddModal={openAddModal}
               HandleaddCoin={addCoin}
               notifyWarn={notifyWarn}
+              coinSymbol={coinSymbol}
+              notifyNotHave={notifyNotHave}
             />
             <InfoModal setInfoModal={setInfoModal} infoModal={infoModal} />
             {loading ? (

@@ -18,6 +18,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Chip from '@material-ui/core/Chip';
 import { SwipeableDrawer } from '@material-ui/core';
+import { useHistory  } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 23,
     fontWeight: 'bolder',
     color: '#3F53B5',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   made : {
     marginBottom: 0
@@ -55,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar({ Link , setInfoModal }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const history = useHistory();
+  const homePage = () => {
+    history.push('/')
+  }
+  
   return (
     <>
       <div className={classes.root}>
@@ -70,8 +76,8 @@ export default function ButtonAppBar({ Link , setInfoModal }) {
               <MenuIcon />
               <Drawer />
             </IconButton>
-            <Typography variant="h5" className={classes.title}> 
-             <Chip label='Your' className={classes.chip}/> Coins  
+            <Typography variant="h5" className={classes.title} > 
+             <Chip label='Your' className={classes.chip} onClick={homePage}/> Coins  
             </Typography>
             <Button color="inherit" onClick={() => setInfoModal(true)}>
               <HelpIcon/>
