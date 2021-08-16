@@ -44,6 +44,9 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [knowCoinName, setKnowCoinName] = useState('');
   const [uniRealAmt, setUniRealAmt] = useState([]);
+  /* const [values, setValues] = useState([]);
+  const curr = [] */
+  //const total = values.reduce((prev, val) => prev + val, 0);
   const notifyAdded = () => {toast.success("Coin Added! 🤟", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
   const notifyRemove = () => {toast.error("Coin removed! ☠️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2000,})};
   const notifyWarn = () => {toast.warn("Kindly Enter Correct values! ☑️", {position: toast.POSITION.BOTTOM_CENTER, autoClose: 2500,})};
@@ -114,7 +117,6 @@ const wholeAmt = coinDetails
 const classes = useStyles();
 const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
 
-
   return (
     <Router>
       <div className="App">
@@ -148,7 +150,7 @@ const addCurrAmt = uniRealAmt.reduce((acc, curr) => (acc = acc + curr),0);
               {loading ? (
                 <Progress style={{  marginTop: 800 }}/>
               ) : (
-                coinDetails.map((det) => (
+                coinDetails.map((det, idx) => (
                   <CoinCard
                     key={det.id}
                     id={det.id}

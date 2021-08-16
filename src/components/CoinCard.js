@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
-
+import Chip from '@material-ui/core/Chip';
 
 
 const useStyles = makeStyles({
@@ -50,6 +50,7 @@ const update = () => {
   props.handleClickUpdate()
 }
 
+
   return (
     <Container maxWidth="xs">
       <Card
@@ -74,30 +75,30 @@ const update = () => {
           <Typography variant="h5" component="h2" style={{ marginTop: "10px" }}>
             {priceData.map((x) => x.name.toUpperCase())}
           </Typography>
-          <Typography className={classes.pos}>
-            {`#️⃣ Market Rank: ${priceData.map((x) => x.market_cap_rank)}`}
-          </Typography>
           <Typography className={classes.pos} color="textPrimary">
             {`🪙 Total Coin: ${props.coin}`}
           </Typography>
           <Typography className={classes.pos} color="textPrimary">
             {`💵 Total Investment: ₹${props.price}`}
           </Typography>
-          <Typography variant="h9" component="h4">
-            {`📈 Current Price: ₹${priceData.map((x) =>
+          <Typography variant="h9" component="h4" className={classes.pos}>
+            {`📈 Current Price of Coin: ₹${priceData.map((x) =>
               x.current_price.toLocaleString()
             )}`}
+            </Typography>
+            <Typography variant="h9" component="h4" className={classes.pos}>
+            <Chip label={`🙋‍♂️ Current Price For You: ₹${currPrice.toFixed(1)}`} variant='outlined' style={{ fontSize: 18, color: color }}/>
           </Typography>
           {profLoss > 0 ? (
             <Typography
-              variant="h5"
+              variant="h6"
               style={{ backgroundColor: "#198c19", color: "white", marginTop: "7px", fontWeight: "bolder", borderRadius: '50px' }}
             >
               {`😎 Profit: ₹${Math.abs(profLoss)} | ${priceChange}%`}
             </Typography>
           ) : (
             <Typography
-              variant="h5"
+              variant="h6"
               style={{ backgroundColor: "#ff3232", color: "white", marginTop: "7px", fontWeight: "bolder", borderRadius: '50px' }}
             >
               {`😢 Loss: ₹${Math.abs(profLoss)} | ${priceChange}%`}
