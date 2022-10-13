@@ -58,10 +58,10 @@ export default function ComplexGrid({ name, coinImg, currPrice, priceChange , ha
                   {name}
                 </Typography>
                 <Typography variant="h6">
-                  {`Price: ₹${currPrice.toLocaleString()}`}
+                  {`Price: ₹${currPrice?.toLocaleString()}`}
                 </Typography>
                 <Typography variant="body1" style={{color: color, display: 'flex', alignItems: 'center', justifyContent: 'center'}} >
-                {sign}{`Change: ${priceChange.toFixed(2)}%`}
+                {sign}{`Change: ${priceChange?.toFixed(2)}%`}
                 </Typography>
               </Grid>
               <Grid item>

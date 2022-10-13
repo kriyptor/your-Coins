@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
+import { useEffect } from 'react';
 
 
 const useStyles = makeStyles({
@@ -40,15 +41,29 @@ const useStyles = makeStyles({
 
 export default function OutlinedCard(props) {
 const classes = useStyles();
-const priceData =  props.coins.filter((c) => (c.symbol === props.name))
-const currPrice = props.coin*priceData.map(x => x.current_price)
-const profLoss = (currPrice-props.price).toFixed(2)
-const priceChange = Math.abs(((props.price-currPrice)/props.price)*100).toFixed(2)
-const color = profLoss > 0 ? '#198c19' : '#ff3232'
+const priceData =  props.coins.filter((c) => (c.symbol === props.name));
+const currPrice = props.coin*priceData.map(x => x.current_price);
+const profLoss = (currPrice-props.price).toFixed(2);
+const priceChange = Math.abs(((props.price-currPrice)/props.price)*100).toFixed(2);
+const color = profLoss > 0 ? '#198c19' : '#ff3232';
+const status = profLoss > 0 ? 1 : 0;
 const update = () => {
   props.setKnowCoinName(props.name)
   props.handleClickUpdate()
 }
+useEffect(() => {
+  props.setThecurr(currPrice, props.index);
+},[props.coinDetails])
+
+const handleDel = () => {
+  props.handleDelCoin(props.id)
+  props.updateCurr(props.index)
+}
+
+useEffect(() => {
+  props.setTheCoinStat(status, props.index);
+},[props.coinDetails])
+
 
 
   return (
@@ -118,7 +133,7 @@ const update = () => {
             variant="outlined"
             size="small"
             color="secondary"
-            onClick={() => props.handleDelCoin(props.id)}
+            onClick={handleDel}
           >
             Delete
           </Button>
